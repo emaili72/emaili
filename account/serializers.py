@@ -29,3 +29,15 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
 '''Register'''
+
+
+'''Users'''
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'username', 'is_active', 'is_superuser', 'date_joined']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        return representation

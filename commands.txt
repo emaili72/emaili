@@ -1,0 +1,8 @@
+[program:celery]
+command/home/vivobook/Desktop/django-practice/email-confirm/venv/bin/celery -A config worker --loglevel=INFO
+directory/home/vivobook/Desktop/django-practice/email-confirm/
+user=www-data
+autostart=true
+autorestart=true
+stdout_logfile/home/vivobook/Desktop/django-practice/email-confirm/logs/celeryd.log
+redirect_stderr=true

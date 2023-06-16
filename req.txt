@@ -5,3 +5,5 @@ python-decouple
 drf-yasg
 psycopg2-binary
 celery
+redis
+supervisor

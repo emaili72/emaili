@@ -14,22 +14,23 @@ from .serializers import *
 
 # Регистрация аккаунта 
 class RegisterAPIView(APIView):
-   @swagger_auto_schema(request_body=RegisterSerializer())
-   def post(self, request):
+    @swagger_auto_schema(request_body=RegisterSerializer())
+    def post(self, request):
       print('DATA', request.data)
       serializer = RegisterSerializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response('To complete registration, follow the link sent', status=201)
-        
-# активация кода
+      return Response('Чтобы закончить регистрацию,следуйте по ссылке ниже', status=201)
+      
+# активация кода 
 @api_view(['GET'])
 def activate_view(request, activation_code):
    user = get_object_or_404(User, activation_code=activation_code)
    user.is_active = True # activate user
    user.activation_code = '' # delete the activated code
    user.save()
-   return Response('Succesfuly activated the account', status=200)
+   return Response(' Аккаунт успешно активирован', status=200)
+
 
 class UserViewSet(viewsets.ModelViewSet):
    queryset = User.objects.all()
@@ -48,4 +49,4 @@ class LogoutView(APIView):
       Token.objects.filter(user=user).delete()
       return Response('Succesfully logged out', status=201)
    
-   # Если это видишь то значит все работает
+   # Если это видишь то калыс чорт

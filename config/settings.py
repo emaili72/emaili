@@ -148,6 +148,7 @@ SWAGGER_SETTINGS = {
     }
 }
 
+
 '''SIMPLE_JWT'''
 from datetime import timedelta
 SIMPLE_JWT = {
